@@ -9,6 +9,13 @@ class BaseModel:
 
     def __getattr__(self, key):
         """Grab attribute from wrapped class, if present."""
+        # Temporary work-around until Ryan's pytest-bdd PR lands:
+        # Scenarios in pre-Ryan pytest-bdd do not have or permit descriptions.
+        # To allow for either version of pytest-bdd, stub out description.
+        # Once Ryan's pytest-bdd PR is in the published pytest-bdd,
+        # this workaround can be removed.
+        if key == "description":
+            return getattr(self._data, key, None)
         return getattr(self._data, key)
 
 
