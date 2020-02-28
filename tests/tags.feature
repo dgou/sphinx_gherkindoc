@@ -9,8 +9,6 @@ Feature: Testing Sphinx Writer
   @api @tag_with_url
   Scenario: Test a Scenario
 
-    A scenario is quicker to write than a outline but less robust.
-
     Given a test feature
     When the suite reaches a scenario
     Then the file is converted into rST
